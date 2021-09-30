@@ -1,8 +1,7 @@
 'use strict';
 
 const path = require('path');
-
-module.exports = {
+const config = {
     /**
      * The default CDN URL, used if not overridden by user
      */
@@ -10,7 +9,9 @@ module.exports = {
     /**
      * The default filesystem path where chromium will be installed.
      */
-    BIN_OUT_PATH: path.join(__dirname, 'lib', 'chromium'),
+    get BIN_OUT_PATH() {
+        return config.getEnvVar('chromium_out_path') || path.join(__dirname, 'lib', 'chromium');
+    },
     /**
      * Gets a configuration parameter from the environment.
      * Will first check for a lowercase variant set via npm config in the format: `npm_config_${name.toLowerCase()}`.
@@ -26,3 +27,4 @@ module.exports = {
         return process.env[`npm_config_${name.toLowerCase()}`] || process.env[name] || '';
     }
 };
+module.exports = config;

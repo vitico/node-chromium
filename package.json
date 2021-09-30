@@ -12,6 +12,7 @@
   "scripts": {
     "postinstall": "node install.js",
     "test": "xo && ava --verbose",
+    "lint": "xo --fix",
     "test-only": "ava --verbose"
   },
   "files": [

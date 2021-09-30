@@ -76,7 +76,7 @@ function _downloadFile(url, destPath) {
  * @param progress Information about progress so far.
  */
 function onProgress(progress) {
-    const fakeProgressBar = {tick: () => {}};
+    const fakeProgressBar = {tick: () => { }};
     try {
         if (!progressBar) {
             const formatBytes = bytes => {
